@@ -20,7 +20,8 @@ app.get("/test-db", async (req, res) => {
         const result = await pool.query("SELECT NOW()")
         res.json({ message: 'Database connected', time: result.rows[0].now })
     } catch (error) {
-        res.json({ error: error.message })
+        console.log("DB ERROR:", error.message)
+    res.json({ error: error.message })
     }
 })
 
