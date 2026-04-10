@@ -3,9 +3,9 @@ import pool from "./db.js"
 
 const router = Router()
 
-//get all todos
+// get all todos
 router.get("/todos", async (req, res) => {
-    try{
+    try {
         const result = await pool.query("SELECT * FROM todos ORDER BY created_at DESC")
         res.json(result.rows)
     } catch (error) {
@@ -13,7 +13,7 @@ router.get("/todos", async (req, res) => {
     }
 })
 
-//create a todo
+// create a todo
 router.post("/todos", async (req, res) => {
     try {
         const { title } = req.body
@@ -24,8 +24,19 @@ router.post("/todos", async (req, res) => {
     }
 })
 
-//update a todo 
+// toggle is_completed
 router.put("/todos/:id", async (req, res) => {
+    try {
+        const { id } = req.params
+        const result = await pool.query("UPDATE todos SET is_completed = NOT is_completed WHERE id = $1 RETURNING *", [id])
+        res.json(result.rows[0])
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+})
+
+// update title
+router.put("/todos/:id/title", async (req, res) => {
     try {
         const { id } = req.params
         const { title } = req.body
@@ -36,8 +47,8 @@ router.put("/todos/:id", async (req, res) => {
     }
 })
 
-//delete a todo
-router.delete ("/todos/:id", async (req, res) => {
+// delete a todo
+router.delete("/todos/:id", async (req, res) => {
     try {
         const { id } = req.params
         await pool.query("DELETE FROM todos WHERE id = $1", [id])
