@@ -58,8 +58,5 @@ router.delete("/todos/:id", async (req, res) => {
     }
 })
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 05266310323b15bc4ce5feb662e387c28b553bd5
 export default router
