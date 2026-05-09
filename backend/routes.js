@@ -25,7 +25,7 @@ router.post("/todos", async (req, res) => {
 })
 
 // toggle is_completed
-/*router.put("/todos/:id", async (req, res) => {
+router.put("/todos/:id", async (req, res) => {
     try {
         const { id } = req.params
         const result = await pool.query("UPDATE todos SET is_completed = NOT is_completed WHERE id = $1 RETURNING *", [id])
@@ -33,7 +33,7 @@ router.post("/todos", async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
-}) */
+}) 
 
 // update title
 router.put("/todos/:id/title", async (req, res) => {
