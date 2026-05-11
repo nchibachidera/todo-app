@@ -34,7 +34,7 @@ function App() {
 
   const updateTodo = async (id) => {
     await fetch(`http://localhost:3000/api/todos/${id}`, {
-      methos: 'PUT'
+      method: 'PUT'
     })
     fetchTodos()
   }
