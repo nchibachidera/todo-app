@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 function App() {
   const [todos, setTodos] = useState([])
   const [title, setTitle] = useState('')
+  const [editId, setEditId] = useState(null)
+  const [editTitle, setEditTitle] = useState('')
 
   useEffect(() => {
     fetchTodos()
@@ -34,8 +36,12 @@ function App() {
 
   const updateTodo = async (id) => {
     await fetch(`http://localhost:3000/api/todos/${id}`, {
-      method: 'PUT'
+      method: 'PUT',
+      headers: { ' content-Type': 'application/json' },
+      body: JSON.stringify({ title: editTitle })
     })
+    setEditId(null)
+    setEditTitle('')
     fetchTodos()
   }
 
