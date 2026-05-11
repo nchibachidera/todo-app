@@ -32,6 +32,13 @@ function App() {
     fetchTodos()
   }
 
+  const updateTodo = async (id) => {
+    await fetch(`http://localhost:3000/api/todos/${id}`, {
+      methos: ' PUT'
+    })
+    fetchTodos()
+  }
+
   const deleteTodo = async (id) => {
     await fetch(`http://localhost:3000/api/todos/${id}`, {
       method: 'DELETE'
@@ -60,7 +67,7 @@ function App() {
               {todo.title}
             </span>
             <button onClick={() => deleteTodo(todo.id)}>Delete</button>
-            <button onClick={() => putTodo(todo.id)}>update</button>
+            <button onClick={() => updateTodo(todo.id)}>update</button>
           </li>
         ))}
       </ul>
