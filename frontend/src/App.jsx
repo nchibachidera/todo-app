@@ -35,7 +35,7 @@ function App() {
   }
 
   const updateTodo = async (id) => {
-    await fetch(`http://localhost:3000/api/todos/${id}`, {
+    await fetch(`http://localhost:3000/api/todos/${id}/title`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: editTitle })
