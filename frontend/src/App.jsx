@@ -53,32 +53,44 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Todo App</h1>
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Enter a todo"
-      />
-      <button onClick={createTodo}>Add</button>
+  <div>
+    <h1>Todo App</h1>
+    <input
+      type="text"
+      value={title}
+      onChange={(e) => setTitle(e.target.value)}
+      placeholder="Enter a todo"
+    />
+    <button onClick={createTodo}>Add</button>
 
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            <span
-              onClick={() => toggleTodo(todo.id)}
-              style={{ textDecoration: todo.is_completed ? 'line-through' : 'none', cursor: 'pointer' }}
-            >
-              {todo.title}
-            </span>
-            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
-            <button onClick={() => updateTodo(todo.id)}>update</button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
+    <ul>
+      {todos.map((todo) => (
+        <li key={todo.id}>
+          {editId === todo.id ? (
+            <>
+              <input
+                value={editTitle}
+                onChange={(e) => setEditTitle(e.target.value)}
+              />
+              <button onClick={() => updateTodo(todo.id)}>Save</button>
+            </>
+          ) : (
+            <>
+              <span
+                onClick={() => toggleTodo(todo.id)}
+                style={{ textDecoration: todo.is_completed ? 'line-through' : 'none', cursor: 'pointer' }}
+              >
+                {todo.title}
+              </span>
+              <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+              <button onClick={() => { setEditId(todo.id); setEditTitle(todo.title) }}>Update</button>
+            </>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+)
 }
 
 export default App
