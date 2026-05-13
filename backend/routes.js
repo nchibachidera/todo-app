@@ -43,7 +43,7 @@ router.put("/todos/:id/title", async (req, res) => {
         const result = await pool.query("UPDATE todos SET title = $1 WHERE id = $2 RETURNING *", [title, id])
         res.json(result.rows[0])
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        res.status(500).json({ e rror: error.message })
     }
 })
 
