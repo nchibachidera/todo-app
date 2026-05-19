@@ -42,7 +42,7 @@ function App() {
     })
     setEditId(null)
     setEditTitle('')
-    fetchTodos()
+    fetchTodos( )
   }
 
   const deleteTodo = async (id) => {
