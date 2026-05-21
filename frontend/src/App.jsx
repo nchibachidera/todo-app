@@ -41,7 +41,7 @@ function App() {
       body: JSON.stringify({ title: editTitle })
     })
     setEditId(null)
-    setEditTitle('')
+    setEditTitle('' )
     fetchTodos()
   }
 
