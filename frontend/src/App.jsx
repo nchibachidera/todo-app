@@ -40,7 +40,7 @@ function App() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: editTitle })
     })
-    setEditId(null)
+    setEditId(null )
     setEditTitle('')
     fetchTodos()
   }
