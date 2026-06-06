@@ -9,7 +9,7 @@ router.get("/todos", async (req, res) => {
         const result = await pool.query("SELECT * FROM todos ORDER BY created_at DESC")
         res.json(result.rows)
     } catch (error) {
-        res.status(500).json({ error: error.message } )
+        res.status(500).json({ error: error.message })
     }
 })
 
