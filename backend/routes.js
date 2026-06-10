@@ -11,7 +11,7 @@ router.get("/todos", async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
-} )
+})
 
 // create a todo
 router.post("/todos", async (req, res) => {
