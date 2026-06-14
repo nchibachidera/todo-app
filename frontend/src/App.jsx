@@ -10,7 +10,7 @@ function App() {
     fetchTodos()
   }, [])
 
-  const fetchTodos = async () => {
+  const fetchTodos = async ( ) => {
     const response = await fetch('http://localhost:3000/api/todos')
     const data = await response.json()
     setTodos(data)
