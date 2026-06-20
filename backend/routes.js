@@ -14,7 +14,7 @@ router.get("/todos", async (req, res) => {
 })
 
 // create a todo
-router.post("/todos", async (req, res) => {
+router.post("/todos", async (req, re) => {
     try {
         const { title } = req.body
         const result = await pool.query("INSERT INTO todos (title) VALUES ($1) RETURNING *", [title])
