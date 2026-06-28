@@ -63,6 +63,8 @@ function App() {
     />
     <button onClick={createTodo}>Add</button>
 
+    <p>{todos.filter(todo => todo.is_completed).length} / {todos.length} completed</p>
+
     <ul>
       {todos.map((todo) => (
         <li key={todo.id}>
@@ -84,6 +86,7 @@ function App() {
               </span>
               <button onClick={() => deleteTodo(todo.id)}>Delete</button>
               <button onClick={() => { setEditId(todo.id); setEditTitle(todo.title) }}>Update</button>
+              <small>{new Date(todo.created_at).toLocaleDateString()}</small>
             </>
           )}
         </li>
