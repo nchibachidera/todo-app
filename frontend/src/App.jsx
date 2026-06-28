@@ -6,7 +6,7 @@ function App() {
   const [editId, setEditId] = useState(null)
   const [editTitle, setEditTitle] = useState('')
 
-  useEffect(( ) => {
+  useEffect(() => {
     fetchTodos()
   }, [])
 
