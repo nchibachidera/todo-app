@@ -23,7 +23,7 @@ router.post("/register", async (req, res) => {
 
 
 //login
-router.post("/login", async (req, res) => {
+routerpost("/login", async (req, res) => {
     try {
         const {email, password} = req.body
         const result = await pool.query("SELECT * FROM users WHERE email = $1", [email])
