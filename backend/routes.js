@@ -1,5 +1,6 @@
 import { Router } from "express"
 import pool from "./db.js"
+import authMiddleware from "./authMiddleware.js"
 
 const router = Router()
 
