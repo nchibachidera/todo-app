@@ -32,7 +32,7 @@ router.put("/todos/:id", async (req, res) => {
         const result = await pool.query("UPDATE todos SET is_completed = NOT is_completed WHERE id = $1 RETURNING *", [id])
         res.json(result.rows[0])
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        res.status(500).json({ error: error.message } )
     }
 }) 
 
