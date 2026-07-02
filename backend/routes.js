@@ -7,7 +7,7 @@ const router = Router()
 // get all todos
 router.get("/todos", authMiddleware, async (req, res) => {
     try {
-        const result = await pool.query("SELECT * FROM todos WHERE user_id = $1 ORDER BY created_at DESC", [request.userId])
+        const result = await pool.query("SELECT * FROM todos WHERE user_id = $1 ORDER BY created_at DESC", [req.userId])
         res.json(result.rows)
     } catch (error) {
         res.status(500).json({ error: error.message })
@@ -26,7 +26,7 @@ router.post("/todos",  authMiddleware, async (req, res) => {
 })
 
 // toggle is_completed
-router.put("/todos/:id", async (req, res) => {
+router.put("/todos/:id", authMiddleware, async (req, res) => {
     try {
         const { id } = req.params
         const result = await pool.query("UPDATE todos SET is_completed = NOT is_completed WHERE id = $1 AND user_id = $2 RETURNING *", [id, req.userId])
