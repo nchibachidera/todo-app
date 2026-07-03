@@ -21,7 +21,7 @@ router.post("/todos",  authMiddleware, async (req, res) => {
         const result = await pool.query("INSERT INTO todos (title, user_id) VALUES ($1, $2) RETURNING *", [title, req.userId])
         res.json(result.rows[0])
     } catch (error) {
-        res.status(500).json({ error: error.message } )
+        res.status(500).json({ error: error.message })
     }
 })
 
