@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "web dev",
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"terminal.integrated.defaultProfile.windows": "Command Prompt"
+	}
+}
