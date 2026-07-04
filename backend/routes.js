@@ -15,7 +15,7 @@ router.get("/todos", authMiddleware, async (req, res) => {
 })
 
 // create a todo
-router.post("/todos",  authMiddleware, async (req, res) => {
+router.post("/todos",  authMiddleware, async ( req, res) => {
     try {
         const { title } = req.body
         const result = await pool.query("INSERT INTO todos (title, user_id) VALUES ($1, $2) RETURNING *", [title, req.userId])
