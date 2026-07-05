@@ -10,7 +10,7 @@ function Register() {
 const handleRegister = async () => {
     const response = await fetch("http://localhost:3000/api/auth/register", {
         method: "Post",
-        headers: { "Content-Type": "Application/Json" },
+        headers: { "Content-Type": "Application/json" },
         body: Json.stringify({ email, password })
     })
     const data = await response.json()
