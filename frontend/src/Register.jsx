@@ -13,4 +13,33 @@ const handleRegister = async () => {
         headers: { "Content-Type": "Application/Json" },
         body: Json.stringify({ email, password })
     })
+    const data = await response.json()
+    if (data.id) {
+        navigate("/login")
+    } else {
+        alert(data.error)
+    }
 }
+
+return (
+    <div>
+        <h1>Register</h1>
+        <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        />
+        
+        <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        />
+        <button onClick={handleRegister}>Register</button>
+        <p> Already have an Account? <span onClick={() => navigate("/login")} style={{cursor: "pointer", color: "blue" }}>Login</span></p>
+    </div>
+)
+
+export default Register
