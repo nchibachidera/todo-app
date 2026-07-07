@@ -15,5 +15,31 @@ const handleLogin = async () => {
     })
 
     const data = await response.json()
-    if (data.token)
+    if (data.token) {
+        localStorage.setItem("token", data.token)
+        navigate("/")
+    } else {
+        alert(data.error)
+    }
 }
+
+return (
+    <div>
+        <h1>Login</h1>
+        <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+        type="password"
+        placeholder="Password"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        />
+        <button onClick={handleLogin}>Login</button>
+        <p>Don't have an Account? <span omClick={() => navigate("/register")} style={{cursor: "pointer", color: "blue"}}>Register</span></p>
+    </div>
+)
