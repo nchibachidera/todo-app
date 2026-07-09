@@ -1,4 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom"
+
+
+const navigate = useNavigate()
+const token = localStorage.getItem("token")
 
 function App() {
   const [todos, setTodos] = useState([])
