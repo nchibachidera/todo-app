@@ -2,21 +2,25 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 
 
-const navigate = useNavigate()
-const token = localStorage.getItem("token")
+
 
 function App() {
   const [todos, setTodos] = useState([])
   const [title, setTitle] = useState('')
   const [editId, setEditId] = useState(null)
   const [editTitle, setEditTitle] = useState('')
+  const navigate = useNavigate()
+  const token = localStorage.getItem("token")
+
 
   useEffect(() => {
     fetchTodos()
   }, [])
 
   const fetchTodos = async () => {
-    const response = await fetch('http://localhost:3000/api/todos')
+    const response = await fetch('http://localhost:3000/api/todos', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
     const data = await response.json()
     setTodos(data)
   }
