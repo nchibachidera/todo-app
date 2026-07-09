@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"
 
 
 
-
 function App() {
   const [todos, setTodos] = useState([])
   const [title, setTitle] = useState('')
@@ -29,7 +28,9 @@ function App() {
     if (!title) return
     await fetch('http://localhost:3000/api/todos', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json',
+        "Authorization": `Bearer ${token}`
+      },
       body: JSON.stringify({ title })
     })
     setTitle('')
@@ -38,7 +39,8 @@ function App() {
 
   const toggleTodo = async (id) => {
     await fetch(`http://localhost:3000/api/todos/${id}`, {
-      method: 'PUT'
+      method: 'PUT',
+      headers: { "Authorization": `Bearer ${token}`}
     })
     fetchTodos()
   }
@@ -46,7 +48,9 @@ function App() {
   const updateTodo = async (id) => {
     await fetch(`http://localhost:3000/api/todos/${id}/title`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json',
+        "Authorization": `Bearer ${token}`
+       },
       body: JSON.stringify({ title: editTitle })
     })
     setEditId(null )
@@ -56,14 +60,21 @@ function App() {
 
   const deleteTodo = async (id) => {
     await fetch(`http://localhost:3000/api/todos/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: { "Authorization": `Bearer{toke}`}
     })
     fetchTodos()
+  }
+
+  const logout = () => {
+    localStorage.removeItem("token")
+    navigate("/login")
   }
 
   return (
   <div>
     <h1>Todo App</h1>
+    <button onClick={logout}>logout</button>
     <input
       type="text"
       value={title}
