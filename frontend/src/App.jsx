@@ -13,7 +13,7 @@ function App() {
 
 
   useEffect(() => {
-    fetchTodos( )
+    fetchTodos()
   }, [])
 
   const fetchTodos = async () => {
