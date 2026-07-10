@@ -24,7 +24,7 @@ function App() {
     setTodos(data)
   }
 
-  const createTodo = async () => {
+  const c reateTodo = async () => {
     if (!title) return
     await fetch('http://localhost:3000/api/todos', {
       method: 'POST',
