@@ -31,7 +31,7 @@ function App() {
       headers: { 'Content-Type': 'application/json',
         "Authorization": `Bearer ${token}`
       },
-      body: JSON.stringify({ title } )
+      body: JSON.stringify({ title })
     })
     setTitle('')
     fetchTodos()
