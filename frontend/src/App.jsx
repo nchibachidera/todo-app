@@ -49,7 +49,7 @@ function App() {
     await fetch(`http://localhost:3000/api/todos/${id}/title`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json',
-        "Authorization": `Bearer ${token }`
+        "Authorization": `Bearer ${token}`
        },
       body: JSON.stringify({ title: editTitle })
     })
