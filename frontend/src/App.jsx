@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 
 function App() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([ ])
   const [title, setTitle] = useState('')
   const [editId, setEditId] = useState(null)
   const [editTitle, setEditTitle] = useState('')
