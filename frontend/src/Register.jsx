@@ -1,17 +1,17 @@
-import { useState } from "React"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 function Register() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
-}
+
 
 const handleRegister = async () => {
     const response = await fetch("http://localhost:3000/api/auth/register", {
         method: "Post",
-        headers: { "Content-Type": "Application/json" },
-        body: Json.stringify({ email, password })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
     })
     const data = await response.json()
     if (data.id) {
@@ -41,5 +41,6 @@ return (
         <p> Already have an Account? <span onClick={() => navigate("/login")} style={{cursor: "pointer", color: "blue" }}>Login</span></p>
     </div>
 )
+}
 
 export default Register
